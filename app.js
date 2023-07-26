@@ -6,9 +6,9 @@ function Book(title, author, booleanRead) {
     this.booleanRead = booleanRead,
     this.info = function() {
         if (!booleanRead) {
-            return `${title} by ${author}, pages, not read yet`
+            return `${title} by ${author}, not read yet`
         } else {
-            return `${title} by ${author}, pages, already read`
+            return `${title} by ${author}, already read`
         }                
     }
 }
