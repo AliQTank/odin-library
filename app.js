@@ -20,7 +20,7 @@ Book.prototype.sayHello = function() {
 const theHobbit = new Book("the hobbit", "j.r.r. tolkien", false)
         console.log(theHobbit.info())
 const cienSoledad = new Book("100 años de soledad", "gabriel garcia marquez", true)
-const masHayaDeTuMente = new Book("mas haya de tu mente", "alan watts", true)
+const masAllaDeTuMente = new Book("mas alla de tu mente", "alan watts", true)
 const robinsonCrusoe = new Book("robinson crusoe", "daniel defoe", true) 
 
 
@@ -30,7 +30,7 @@ function addBookToLibrary(objectName) {
 
 addBookToLibrary(theHobbit)
 addBookToLibrary(cienSoledad)
-addBookToLibrary(masHayaDeTuMente)
+addBookToLibrary(masAllaDeTuMente)
 addBookToLibrary(robinsonCrusoe)
 
 function libraryLooper() {}
