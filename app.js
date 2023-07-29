@@ -1,4 +1,5 @@
 let myLibrary = []
+const table = document.getElementsByTagName("table");
 
 function Book(title, author, booleanRead) {
     this.title = title,
@@ -42,3 +43,7 @@ for (let i = 0; i < myLibrary.length; i++) {
 }
 
 document.getElementById("demo").innerHTML = allBooks;
+
+/*************/
+
+table.style.backgroundColor = "red";

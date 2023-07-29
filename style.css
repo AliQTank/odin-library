@@ -24,3 +24,7 @@ form input[type=text] {
 form input[type=submit] {
     width: 120px;
 }
+
+table tr th {
+    width: 300px;
+}
