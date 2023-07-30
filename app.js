@@ -1,16 +1,22 @@
-let myLibrary = []
 const table = document.getElementsByTagName("table");
+const onlyTable = document.getElementById("only-table");
+const h2 = document.getElementById("header-number-2");
+var trCreator = document.createElement("tr");
+
+
+let myLibrary = []
 
 function Book(title, author, booleanRead) {
     this.title = title,
     this.author = author,
-    this.booleanRead = booleanRead,
-    this.info = function() {
-        if (!booleanRead) {
-            return `${title} by ${author}, not read yet`
-        } else {
-            return `${title} by ${author}, already read`
-        }                
+    this.booleanRead = booleanRead    
+}
+
+Book.prototype.info = function() {
+    if (!this.booleanRead) {
+        return `${this.title} by ${this.author}, not read yet`
+    } else {
+        return `${this.title} by ${this.author}, already read`
     }
 }
 
@@ -34,16 +40,41 @@ addBookToLibrary(cienSoledad)
 addBookToLibrary(masAllaDeTuMente)
 addBookToLibrary(robinsonCrusoe)
 
-function libraryLooper() {}
-
-/*********** */
-let allBooks = ""
-for (let i = 0; i < myLibrary.length; i++) {
-    allBooks += myLibrary[i].title + "<br>";
+function libraryLooper() {
+    let allBooksIntoP = ""
+    for (let i = 0; i < myLibrary.length; i++) {
+    allBooksIntoP += myLibrary[i].title + "<br>";
+    }
+    document.getElementById("demo").innerHTML = allBooksIntoP;
 }
 
-document.getElementById("demo").innerHTML = allBooks;
+libraryLooper()
 
 /*************/
+/*************/
 
-table.style.backgroundColor = "red";
+h2.style.color = "blue";
+onlyTable.style.color = "red"
+onlyTable.style.backgroundColor = "yellow"
+
+let allBooksIntoTable = ""
+
+/********************/
+
+function addBookToTable() {
+    //var trCreator = document.createElement("tr");
+    var tCellCreator = document.createElement("td");    
+    for (let i = 0; i < myLibrary.length; i++) {        
+        for (let j = 0; j < Object.values(myLibrary[i])[length]; j++) {
+            tCellCreator.innerHTML = Object.values(myLibrary[i])[j]
+            trCreator.appendChild(tCellCreator)
+        } 
+        onlyTable.appendChild(trCreator)
+    }
+}
+
+addBookToTable()
+
+function tableNamer() {
+    onlyTable.appendChild(trCreator)
+}
