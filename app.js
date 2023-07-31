@@ -2,6 +2,8 @@ const table = document.getElementsByTagName("table");
 const onlyTable = document.getElementById("only-table");
 const h2 = document.getElementById("header-number-2");
 var trCreator = document.createElement("tr");
+var tCellCreator = document.createElement("td");
+var tCellCreatorInsert = trCreator.insertCell(-1);
 
 
 let myLibrary = []
@@ -62,19 +64,38 @@ let allBooksIntoTable = ""
 /********************/
 
 function addBookToTable() {
-    //var trCreator = document.createElement("tr");
-    var tCellCreator = document.createElement("td");    
-    for (let i = 0; i < myLibrary.length; i++) {        
-        for (let j = 0; j < Object.values(myLibrary[i])[length]; j++) {
-            tCellCreator.innerHTML = Object.values(myLibrary[i])[j]
-            trCreator.appendChild(tCellCreator)
-        } 
-        onlyTable.appendChild(trCreator)
+    tCellCreator.innerText = "hello world";
+    trCreator.appendChild(tCellCreator);
+    onlyTable.appendChild(trCreator);
+}
+
+function    rowsInserter() {
+    //var table = document.getElementById("only-table");
+    var row = onlyTable.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = "NEW CELL1";
+    cell2.innerHTML = "NEW CELL2";
+    cell3.innerHTML = "NEW CELL3";
+  }
+
+  for (let i = 0; i < myLibrary.length; i++) {
+
+    console.log(myLibrary[i]);
+  }
+
+  function    rowsInserter2() {
+    //var table = document.getElementById("only-table");
+    
+    for (let i = 0; i < myLibrary.length; i++) {
+        var row = onlyTable.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = myLibrary[i].title;
+        cell2.innerHTML = myLibrary[i].author;
+        cell3.innerHTML = myLibrary[i].booleanRead;
     }
-}
-
-addBookToTable()
-
-function tableNamer() {
-    onlyTable.appendChild(trCreator)
-}
+    
+  }
