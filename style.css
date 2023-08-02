@@ -21,11 +21,29 @@ form input[type=text] {
     padding-left: 10px;
 }
 
+form select {
+    margin-right: 40px;
+}
+
 form input[type=submit] {
     width: 120px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+}
+
+
+table {
+    border: 1px solid rebeccapurple;
 }
 
 table tr th,
 table tr td {
     width: 300px;
+    text-transform: capitalize;
+    height: 40px;
+    padding-left: 15px;
 }
+
+table tr:nth-child(even) {
+    background-color: #ddcaca;
+} 

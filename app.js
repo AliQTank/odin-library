@@ -4,6 +4,7 @@ const h2 = document.getElementById("header-number-2");
 var trCreator = document.createElement("tr");
 var tCellCreator = document.createElement("td");
 var tCellCreatorInsert = trCreator.insertCell(-1);
+const buttonAdder = document.getElementById("book-inserting-button");
 
 
 let myLibrary = []
@@ -56,18 +57,12 @@ libraryLooper()
 /*************/
 
 h2.style.color = "blue";
-onlyTable.style.color = "red"
-onlyTable.style.backgroundColor = "yellow"
+//onlyTable.style.color = "black"
+//onlyTable.style.backgroundColor = "gray"
 
 let allBooksIntoTable = ""
 
 /********************/
-
-function addBookToTable() {
-    tCellCreator.innerText = "hello world";
-    trCreator.appendChild(tCellCreator);
-    onlyTable.appendChild(trCreator);
-}
 
 function    rowsInserter() {
     //var table = document.getElementById("only-table");
@@ -75,9 +70,12 @@ function    rowsInserter() {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";
-    cell3.innerHTML = "NEW CELL3";
+    cell1.innerHTML = document.getElementById("title").value;
+    document.getElementById("title").value = ''
+    cell2.innerHTML = document.getElementById("author").value;
+    document.getElementById("author").value = ''
+    cell3.innerHTML = document.getElementById("did-you-read-it").value;
+    document.getElementById("did-you-read-it").value = ''
   }
 
   for (let i = 0; i < myLibrary.length; i++) {
@@ -99,3 +97,11 @@ function    rowsInserter() {
     }
     
   }
+
+  rowsInserter2()
+
+  buttonAdder.addEventListener("click", (e)=> {
+    rowsInserter()
+    console.log("clicked");
+    e.preventDefault();
+  })
