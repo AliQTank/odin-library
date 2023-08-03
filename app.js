@@ -91,9 +91,15 @@ function    rowsInserter() {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
+        var newBtnEraser = document.createElement('button');
+        var btnStatusChanger = document.createElement('button');
         cell1.innerHTML = myLibrary[i].title;
         cell2.innerHTML = myLibrary[i].author;
         cell3.innerHTML = myLibrary[i].booleanRead;
+        newBtnEraser.innerText = 'erase';
+        btnStatusChanger.innerText = 'read';
+        cell3.appendChild(newBtnEraser);
+        cell3.appendChild(btnStatusChanger);
     }
     
   }

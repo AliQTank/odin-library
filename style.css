@@ -4,6 +4,14 @@
     font-size: 18px;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
 body {
     margin: 50px;
 
@@ -31,7 +39,6 @@ form input[type=submit] {
     background-color: whitesmoke;
 }
 
-
 table {
     border: 1px solid rebeccapurple;
 }
@@ -47,3 +54,7 @@ table tr td {
 table tr:nth-child(even) {
     background-color: #ddcaca;
 } 
+
+table tr td button {
+    border-radius: 20px;
+}
