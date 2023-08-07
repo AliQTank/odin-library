@@ -55,6 +55,31 @@ table tr:nth-child(even) {
     background-color: #ddcaca;
 } 
 
-table tr td button {
+/* table tr td button {
     border-radius: 20px;
+    position: absolute;
+    left: 800px;
+} */
+
+table tr td:nth-child(3) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+table tr td button {
+    align-self: normal;
+    width: 60px;
+}
+
+table tr td button:hover {
+    background-color: black;
+    color: gray;
+    
+}
+
+table tr td button:first-child {
+    margin-left: 100px;
+    
 }

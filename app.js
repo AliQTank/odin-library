@@ -70,12 +70,18 @@ function    rowsInserter() {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
+    var newBtnEraser = document.createElement('button');
+    var btnStatusChanger = document.createElement('button');
     cell1.innerHTML = document.getElementById("title").value;
     document.getElementById("title").value = ''
     cell2.innerHTML = document.getElementById("author").value;
     document.getElementById("author").value = ''
     cell3.innerHTML = document.getElementById("did-you-read-it").value;
     document.getElementById("did-you-read-it").value = ''
+    newBtnEraser.innerText = 'delete';
+    btnStatusChanger.innerText = 'read';
+    cell3.appendChild(newBtnEraser);
+    cell3.appendChild(btnStatusChanger);
   }
 
   for (let i = 0; i < myLibrary.length; i++) {
@@ -96,7 +102,7 @@ function    rowsInserter() {
         cell1.innerHTML = myLibrary[i].title;
         cell2.innerHTML = myLibrary[i].author;
         cell3.innerHTML = myLibrary[i].booleanRead;
-        newBtnEraser.innerText = 'erase';
+        newBtnEraser.innerText = 'delete';
         btnStatusChanger.innerText = 'read';
         cell3.appendChild(newBtnEraser);
         cell3.appendChild(btnStatusChanger);
