@@ -5,6 +5,7 @@ var trCreator = document.createElement("tr");
 var tCellCreator = document.createElement("td");
 var tCellCreatorInsert = trCreator.insertCell(-1);
 const buttonAdder = document.getElementById("book-inserting-button");
+const button = document.getElementsByTagName("button")
 
 
 let myLibrary = []
@@ -113,7 +114,15 @@ function    rowsInserter() {
   rowsInserter2()
 
   buttonAdder.addEventListener("click", (e)=> {
-    rowsInserter()
+    if (document.getElementById("title").value === '' || 
+        document.getElementById("author").value === '' ||
+        document.getElementById("did-you-read-it").value === '') {
+            e.preventDefault();
+        } else {
+            rowsInserter()
     console.log("clicked");
     e.preventDefault();
+
+        }
+    
   })
