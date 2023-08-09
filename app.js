@@ -81,6 +81,7 @@ function    rowsInserter() {
     document.getElementById("did-you-read-it").value = ''
     newBtnEraser.innerText = 'delete';
     btnStatusChanger.innerText = 'read';
+    btnStatusChanger.classList.add('orange'); //this lline is not working
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
   }
@@ -105,6 +106,7 @@ function    rowsInserter() {
         cell3.innerHTML = myLibrary[i].booleanRead;
         newBtnEraser.innerText = 'delete';
         btnStatusChanger.innerText = 'read';
+        btnStatusChanger.classList.add('orange');
         cell3.appendChild(newBtnEraser);
         cell3.appendChild(btnStatusChanger);
     }
@@ -126,3 +128,12 @@ function    rowsInserter() {
         }
     
   })
+
+  const trRowCollection = document.getElementsByClassName('orange');
+  for (let i = 0; i < trRowCollection.length; i++) {
+    trRowCollection[i].addEventListener("click", () => {
+        console.log("clicked read")
+
+    })
+    trRowCollection[i].style.color = "red";
+  }  
