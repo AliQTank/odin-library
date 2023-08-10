@@ -68,6 +68,10 @@ table tr td:nth-child(3) {
     align-items: center;
 }
 
+table tr td:nth-child(3) p  {
+    flex: auto;
+}
+
 table tr td button {
     align-self: normal;
     width: 60px;
@@ -92,4 +96,9 @@ table tr td button:first-child {
 .orange:hover {
     background-color: aqua;
     color: rgb(250, 128, 114);
+}
+
+.true-lies {
+    background-color: black;
+    color: white;
 }
