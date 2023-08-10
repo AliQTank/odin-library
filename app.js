@@ -136,13 +136,13 @@ function    rowsInserter() {
     trRowCollection[i].addEventListener("click", () => {
         console.log("clicked read")
         trRowCollection[i].classList.toggle("true-lies");
-        // if (myLibrary[i].booleanRead) {
-        //     myLibrary[i].booleanRead = false;
-        //     trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
-        // } else {
-        //     myLibrary[i].booleanRead = true;
-        //     trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
-        // }
+        if (myLibrary[i].booleanRead) {
+            myLibrary[i].booleanRead = false;
+            trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
+        } else {
+            myLibrary[i].booleanRead = true;
+            trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
+        }
         
     })
     trRowCollection[i].style.color = "orangered";
