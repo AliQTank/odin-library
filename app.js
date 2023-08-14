@@ -10,6 +10,8 @@ const button = document.getElementsByTagName("button")
 
 let myLibrary = []
 
+//BOOK CONSTRUCTOR
+
 function Book(title, author, booleanRead) {
     this.title = title,
     this.author = author,
@@ -117,6 +119,20 @@ function    rowsInserter() {
 
   rowsInserter2()
 
+  function rowsInserter3() {
+    var row = onlyTable.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var newBtnEraser = document.createElement('button');
+    var btnStatusChanger = document.createElement('button');
+    myLibrary
+    .push(
+        {title: document.getElementById("title").value,
+         author: document.getElementById("author").value,
+         booleanRead: document.getElementById("did-you-read-it").value})
+  }
+
   buttonAdder.addEventListener("click", (e)=> {
     if (document.getElementById("title").value === '' || 
         document.getElementById("author").value === '' ||
@@ -147,3 +163,5 @@ function    rowsInserter() {
     })
     trRowCollection[i].style.color = "orangered";
   }  
+
+  //export {Book}
