@@ -73,7 +73,7 @@ function newBookInserter() {
     cell2.innerHTML = myLibrary[myLibrary.length-1].author;
     document.getElementById("author").value = '';
     // cell3.innerHTML = myLibrary[myLibrary.length-1].booleanRead;
-    cell3.innerHTML = `<p>${myLibrary[myLibrary.length-1].booleanRead}</p>`
+    cell3.innerHTML = `<p>${myLibrary[myLibrary.length-1].booleanRead}</p>` //NOT CONVERTED YET TO BOOLEAN
     document.getElementById("did-you-read-it").value = ''
     newBtnEraser.innerHTML = '<span class="material-symbols-outlined">delete</span>';
     newBtnEraser.classList.add('trash');
