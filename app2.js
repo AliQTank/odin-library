@@ -20,9 +20,6 @@ Book.prototype.sayHello = function() {
 }
 
 const myLibrary = [];
-function myLibPusher(title, author, booleanRead) {
-    myLibrary.push({title:title, author:author, booleanRead: booleanRead})
-}
 
 function myLibPusher2(title, author, booleanRead) {
     myLibrary.push(new Book(title, author, booleanRead))
@@ -105,7 +102,7 @@ buttonAdder.addEventListener("click", (e)=> {
         document.getElementById("did-you-read-it").value === '') {
             e.preventDefault();
         } else {
-            myLibPusher2(document.getElementById("title").value, document.getElementById("author").value, document.getElementById("did-you-read-it").value);
+            myLibPusher2(document.getElementById("title").value, document.getElementById("author").value, document.getElementById("did-you-read-it").value==1);
             console.log(myLibrary);
             e.preventDefault();
             newBookInserter()
