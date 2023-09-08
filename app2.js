@@ -1,12 +1,16 @@
 //import { Book } from "./app";
 const buttonAdder = document.getElementById("book-inserting-button");
+const trashButtons = document.getElementsByClassName('trash');
 
+
+//FUNCTION TO CREATE BOOK OBJECT
 function Book(title, author, booleanRead) {
     this.title = title,
     this.author = author,
     this.booleanRead = booleanRead    
 }
 
+//PROTOTYPE TO ADD METHOD TO BOOK OBJECT
 Book.prototype.info = function() {
     if (!this.booleanRead) {
         return `${this.title} by ${this.author}, not read yet`
@@ -15,21 +19,26 @@ Book.prototype.info = function() {
     }
 }
 
+//PROTOTYPE TO ADD METHOD TO BOOK OBJECT
 Book.prototype.sayHello = function() {
     return `Hi!!, i am ${this.title} and i am a good book`
 }
 
+//ARRAY MYLIBRARY
 const myLibrary = [];
 
+//FUNCTION TO ADD BOOK OBJECT TO ARRAY MYLIBRARY
 function myLibPusher2(title, author, booleanRead) {
     myLibrary.push(new Book(title, author, booleanRead))
 }
 
+//BOOK OBJECTS ADDED TO MYLIBRARY ARRAY
 myLibPusher2("the hobbit", "jrr tolkien", false);
 myLibPusher2("100 años de soledad", "gabriel garcia marquez", true);
 myLibPusher2("más allá de tu mente", "alan watts", true);
 myLibPusher2("robinson crusoe", "daniel defoe", true)
 
+//FUNCTION TO INSERT MYLIBRARY ARRAY INTO TABLE AT FIRST LOG, PREREGISTERED BOOK OBJECTS BY DEFAULT
 function    rowsInserter2() {
     //var table = document.getElementById("only-table");
     
@@ -55,6 +64,7 @@ function    rowsInserter2() {
     
   }
 
+  //FUNCTION TO INSERT NEW BOOK OBJECT INTO TABLE AND INSERT 
   rowsInserter2()
 
 function newBookInserter() {
@@ -65,34 +75,37 @@ function newBookInserter() {
     var cell3 = row.insertCell(2);
     var newBtnEraser = document.createElement('button');
     var btnStatusChanger = document.createElement('button');
-    cell1.innerHTML = myLibrary[myLibrary.length-1].title;
+    var thisIndex = myLibrary.length - 1;
+    cell1.innerHTML = myLibrary[thisIndex].title;
     document.getElementById("title").value = '';
-    cell2.innerHTML = myLibrary[myLibrary.length-1].author;
+    cell2.innerHTML = myLibrary[thisIndex].author;
     document.getElementById("author").value = '';
-    // cell3.innerHTML = myLibrary[myLibrary.length-1].booleanRead;
-    cell3.innerHTML = `<p>${myLibrary[myLibrary.length-1].booleanRead}</p>` //NOT CONVERTED YET TO BOOLEAN
+    // cell3.innerHTML = myLibrary[thisIndex].booleanRead;
+    cell3.innerHTML = `<p>${myLibrary[thisIndex].booleanRead}</p>` 
     document.getElementById("did-you-read-it").value = ''
     newBtnEraser.innerHTML = '<span class="material-symbols-outlined">delete</span>';
     newBtnEraser.classList.add('trash');
     btnStatusChanger.innerHTML = '<span class="material-symbols-outlined">import_contacts</span>';
-    btnStatusChanger.classList.add('orange'); //this lline is not working
+    btnStatusChanger.classList.add('orange'); 
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
     trRowCollection[trRowCollection.length-1].addEventListener("click", () => {
         console.log("new button clicked");
         trRowCollection[trRowCollection.length-1].classList.toggle("true-lies");
-        if (myLibrary[myLibrary.length-1].booleanRead) {
-            myLibrary[myLibrary.length-1].booleanRead = false;
-            trRowCollection[trRowCollection.length-1].parentElement.firstChild.innerText = myLibrary[myLibrary.length-1].booleanRead;
+        if (myLibrary[thisIndex].booleanRead) {
+            myLibrary[thisIndex].booleanRead = false;
+            trRowCollection[trRowCollection.length-1].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
         } else {
-            myLibrary[myLibrary.length-1].booleanRead = true;
-            trRowCollection[trRowCollection.length-1].parentElement.firstChild.innerText = myLibrary[myLibrary.length-1].booleanRead;
+            myLibrary[thisIndex].booleanRead = true;
+            trRowCollection[trRowCollection.length-1].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
         }
     })
     trashButtons[trashButtons.length-1].addEventListener("click", () => {
         console.log("new trash button clicked");
     })
 } 
+
+//FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
 
 //console.log(myLibrary)
 
@@ -127,10 +140,10 @@ buttonAdder.addEventListener("click", (e)=> {
     //trRowCollection[i].style.color = "orangered";
   }
 
-  const trashButtons = document.getElementsByClassName('trash');
+  // ALGROTM TO ADD EVENT TO TRASH BUTTON
   for (let i = 0; i < trashButtons.length; i++) {
     trashButtons[i].addEventListener("click", () => {
-        console.log("trash clicked");
+        console.log(`trash clicked`);
     })
   }
 
