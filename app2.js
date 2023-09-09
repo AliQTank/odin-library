@@ -2,7 +2,6 @@
 const buttonAdder = document.getElementById("book-inserting-button");
 const trashButtons = document.getElementsByClassName('trash');
 
-
 //FUNCTION TO CREATE BOOK OBJECT
 function Book(title, author, booleanRead) {
     this.title = title,
@@ -89,19 +88,20 @@ function newBookInserter() {
     btnStatusChanger.classList.add('orange'); 
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    trRowCollection[trRowCollection.length-1].addEventListener("click", () => {
+    trRowCollection[thisIndex].addEventListener("click", () => {
         console.log("new button clicked");
-        trRowCollection[trRowCollection.length-1].classList.toggle("true-lies");
+        trRowCollection[thisIndex].classList.toggle("true-lies");
         if (myLibrary[thisIndex].booleanRead) {
             myLibrary[thisIndex].booleanRead = false;
-            trRowCollection[trRowCollection.length-1].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
+            trRowCollection[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
         } else {
             myLibrary[thisIndex].booleanRead = true;
-            trRowCollection[trRowCollection.length-1].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
+            trRowCollection[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
         }
     })
     trashButtons[trashButtons.length-1].addEventListener("click", () => {
         console.log("new trash button clicked");
+        console.log(trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML);
     })
 } 
 
@@ -115,7 +115,9 @@ buttonAdder.addEventListener("click", (e)=> {
         document.getElementById("did-you-read-it").value === '') {
             e.preventDefault();
         } else {
-            myLibPusher2(document.getElementById("title").value, document.getElementById("author").value, document.getElementById("did-you-read-it").value==1);
+            myLibPusher2(document.getElementById("title").value, 
+            document.getElementById("author").value, 
+            document.getElementById("did-you-read-it").value==1);
             console.log(myLibrary);
             e.preventDefault();
             newBookInserter()
@@ -144,6 +146,7 @@ buttonAdder.addEventListener("click", (e)=> {
   for (let i = 0; i < trashButtons.length; i++) {
     trashButtons[i].addEventListener("click", () => {
         console.log(`trash clicked`);
+        console.log(trRowCollection[i].parentElement.parentElement.cells[0].innerHTML);
     })
   }
 
