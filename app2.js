@@ -100,8 +100,12 @@ function newBookInserter() {
         }
     })
     trashButtons[trashButtons.length-1].addEventListener("click", () => {
+        let nameOfBookInList = trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML;
+        const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
         console.log("new trash button clicked");
         console.log(trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML);
+        console.log(trRowCollection[thisIndex].parentElement);
+        console.log(indexOfLibrary);
     })
 } 
 
@@ -145,8 +149,11 @@ buttonAdder.addEventListener("click", (e)=> {
   // ALGROTM TO ADD EVENT TO TRASH BUTTON
   for (let i = 0; i < trashButtons.length; i++) {
     trashButtons[i].addEventListener("click", () => {
+        let nameOfBookInList = trRowCollection[i].parentElement.parentElement.cells[0].innerHTML 
+        const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
         console.log(`trash clicked`);
-        console.log(trRowCollection[i].parentElement.parentElement.cells[0].innerHTML);
+        console.log(indexOfLibrary);
+        console.log(nameOfBookInList);
     })
   }
 
