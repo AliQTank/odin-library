@@ -154,7 +154,11 @@ buttonAdder.addEventListener("click", (e)=> {
         console.log(`trash clicked`);
         console.log(indexOfLibrary);
         console.log(nameOfBookInList);
+        myLibrary.splice(nameOfBookInList, 1);
+        console.log(myLibrary)
     })
   }
 
+
+  //IN ORDER TO MODIFY MYLIBRARYARRAY, I SHOULD USE SPLICE METHOD, AND THEN IDENTIFY THE TROW TO ELIMINATE IT ALL
 
