@@ -103,9 +103,11 @@ function newBookInserter() {
         let nameOfBookInList = trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML;
         const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
         console.log("new trash button clicked");
-        console.log(trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML);
-        console.log(trRowCollection[thisIndex].parentElement);
+        //console.log(trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML);
+        //console.log(trRowCollection[thisIndex].parentElement);
         console.log(indexOfLibrary);
+        myLibrary.splice(indexOfLibrary, 1);
+        console.log(myLibrary);
     })
 } 
 
@@ -154,8 +156,9 @@ buttonAdder.addEventListener("click", (e)=> {
         console.log(`trash clicked`);
         console.log(indexOfLibrary);
         console.log(nameOfBookInList);
-        myLibrary.splice(nameOfBookInList, 1);
-        console.log(myLibrary)
+        myLibrary.splice(indexOfLibrary, 1);
+        console.log(myLibrary);
+        //trRowCollection[indexOfLibrary].parentElement.parentElement.remove()
     })
   }
 
