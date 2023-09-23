@@ -159,6 +159,9 @@ buttonAdder.addEventListener("click", (e)=> {
         myLibrary.splice(indexOfLibrary, 1);
         console.log(myLibrary);
         //trRowCollection[indexOfLibrary].parentElement.parentElement.remove()
+        for (let j = trRowCollection.length - 1; j >= 0; i--) {
+            trRowCollection[j].parentElement.parentElement.remove()
+        }
     })
   }
 
