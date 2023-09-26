@@ -149,27 +149,40 @@ buttonAdder.addEventListener("click", (e)=> {
   }
 
   // ALGROTM TO ADD EVENT TO TRASH BUTTON
+//   for (let i = 0; i < trashButtons.length; i++) {
+//     trashButtons[i].addEventListener("click", () => {
+//         let nameOfBookInList = trRowCollection[i].parentElement.parentElement.cells[0].innerHTML 
+//         const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+//         console.log(`trash clicked`);
+//         console.log(indexOfLibrary);
+//         console.log(nameOfBookInList);
+//         myLibrary.splice(indexOfLibrary, 1);
+//         console.log(myLibrary);
+//         //trRowCollection[i].remove()
+//         //trRowCollection[i].parentElement.remove()
+//         trRowCollection[i].parentElement.parentElement.remove()
+//         //trRowCollection[indexOfLibrary].parentElement.parentElement.remove()
+//         for (let j = 0; j <= trRowCollection.length - 1; j++) {
+//             if (nameOfBookInList === trRowCollection[j].parentElement.parentElement.cells[0].innerHTML) {
+//                 trRowCollection[j].parentElement.parentElement.remove()            
+//             }
+//         }
+        
+//     })
+//   }
+
   for (let i = 0; i < trashButtons.length; i++) {
     trashButtons[i].addEventListener("click", () => {
-        let nameOfBookInList = trRowCollection[i].parentElement.parentElement.cells[0].innerHTML 
-        const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
-        console.log(`trash clicked`);
-        console.log(indexOfLibrary);
-        console.log(nameOfBookInList);
-        myLibrary.splice(indexOfLibrary, 1);
-        console.log(myLibrary);
-        //trRowCollection[i].remove()
-        //trRowCollection[i].parentElement.remove()
+        let nameOfBookInList = trRowCollection[i].parentElement.parentElement.cells[0].innerHTML
+        let indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
+        console.log(`trash number ${indexOfLibrary} clicked, book named ${nameOfBookInList}`)
+        myLibrary.splice(indexOfLibrary, 1)
+        console.log(myLibrary)
         trRowCollection[i].parentElement.parentElement.remove()
-        //trRowCollection[indexOfLibrary].parentElement.parentElement.remove()
-        for (let j = 0; j <= trRowCollection.length - 1; j++) {
-            if (nameOfBookInList === trRowCollection[j].parentElement.parentElement.cells[0].innerHTML) {
-                trRowCollection[j].parentElement.parentElement.remove()            
-            }
-        }
-        
     })
   }
+
+
 
 
   //trRowCollection[3].parentElement.parentElement.children[0].innerHTML
