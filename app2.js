@@ -158,13 +158,19 @@ buttonAdder.addEventListener("click", (e)=> {
         console.log(nameOfBookInList);
         myLibrary.splice(indexOfLibrary, 1);
         console.log(myLibrary);
+        //trRowCollection[i].remove()
+        //trRowCollection[i].parentElement.remove()
+        trRowCollection[i].parentElement.parentElement.remove()
         //trRowCollection[indexOfLibrary].parentElement.parentElement.remove()
-        for (let j = trRowCollection.length - 1; j >= 0; i--) {
-            trRowCollection[j].parentElement.parentElement.remove()
+        for (let j = 0; j <= trRowCollection.length - 1; j++) {
+            if (nameOfBookInList === trRowCollection[j].parentElement.parentElement.cells[0].innerHTML) {
+                trRowCollection[j].parentElement.parentElement.remove()            
+            }
         }
+        
     })
   }
 
 
-  //IN ORDER TO MODIFY MYLIBRARYARRAY, I SHOULD USE SPLICE METHOD, AND THEN IDENTIFY THE TROW TO ELIMINATE IT ALL
+  //trRowCollection[3].parentElement.parentElement.children[0].innerHTML
 
