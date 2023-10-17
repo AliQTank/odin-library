@@ -1,6 +1,7 @@
 //import { Book } from "./app";
 const buttonAdder = document.getElementById("book-inserting-button");
 const trashButtons = document.getElementsByClassName('trash');
+const trRowCollection = document.getElementsByClassName('orange');
 
 //FUNCTION TO CREATE BOOK OBJECT
 function Book(title, author, booleanRead) {
@@ -130,8 +131,7 @@ buttonAdder.addEventListener("click", (e)=> {
 
         }    
   })
-
-  const trRowCollection = document.getElementsByClassName('orange');
+  
   for (let i = 0; i < trRowCollection.length; i++) {
     trRowCollection[i].addEventListener("click", () => {
         console.log("clicked read")
@@ -149,41 +149,43 @@ buttonAdder.addEventListener("click", (e)=> {
   }
 
   // ALGROTM TO ADD EVENT TO TRASH BUTTON
-//   for (let i = 0; i < trashButtons.length; i++) {
-//     trashButtons[i].addEventListener("click", () => {
-//         let nameOfBookInList = trRowCollection[i].parentElement.parentElement.cells[0].innerHTML 
-//         const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
-//         console.log(`trash clicked`);
-//         console.log(indexOfLibrary);
-//         console.log(nameOfBookInList);
-//         myLibrary.splice(indexOfLibrary, 1);
-//         console.log(myLibrary);
-//         //trRowCollection[i].remove()
-//         //trRowCollection[i].parentElement.remove()
-//         trRowCollection[i].parentElement.parentElement.remove()
-//         //trRowCollection[indexOfLibrary].parentElement.parentElement.remove()
-//         for (let j = 0; j <= trRowCollection.length - 1; j++) {
-//             if (nameOfBookInList === trRowCollection[j].parentElement.parentElement.cells[0].innerHTML) {
-//                 trRowCollection[j].parentElement.parentElement.remove()            
-//             }
-//         }
-        
-//     })
+
+
+
+
+
+
+ //trRowCollection[3].parentElement.parentElement.children[0].innerHTML
+
+
+  //josesmiththeone
+  //josesmith283522 backup
+
+//   function whatToErase() {
+//     for (let i = 0; i < trashButtons.length; i++) {
+//         trashButtons[i].addEventListener("click", (e) => {
+//             const nameOfBookInList = trashButtons[i].parentElement.parentElement.cells[0].innerHTML
+//             const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
+//             console.log(`clicked ${indexOfLibrary}`);
+//             myLibrary.splice(indexOfLibrary, 1);
+
+//         })
+//     }
 //   }
 
-  for (let i = 0; i < trashButtons.length; i++) {
-    trashButtons[i].addEventListener("click", () => {
-        let nameOfBookInList = trRowCollection[i].parentElement.parentElement.cells[0].innerHTML
-        let indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
-        console.log(`trash number ${indexOfLibrary} clicked, book named ${nameOfBookInList}`)
-        myLibrary.splice(indexOfLibrary, 1)
-        console.log(myLibrary)
-        trRowCollection[i].parentElement.parentElement.remove()
-    })
+//   whatToErase()
+
+  function arrayConvertToerase() {
+    const arrayLib = Array.from(trashButtons)
+    arrayLib.forEach(element => {
+        element.addEventListener("click", () => {
+            const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
+            const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
+            console.log(nameOfBookInList, indexOfLibrary)
+            myLibrary.splice(indexOfLibrary, 1)
+            trashButtons[indexOfLibrary].parentElement.parentElement.remove()
+        })        
+    });
   }
 
-
-
-
-  //trRowCollection[3].parentElement.parentElement.children[0].innerHTML
-
+  arrayConvertToerase()
