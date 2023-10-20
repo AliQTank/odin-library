@@ -128,32 +128,44 @@ buttonAdder.addEventListener("click", (e)=> {
             console.log(myLibrary);
             e.preventDefault();
             newBookInserter()
-
         }    
   })
-  
-  for (let i = 0; i < trRowCollection.length; i++) {
-    trRowCollection[i].addEventListener("click", () => {
-        console.log("clicked read")
-        trRowCollection[i].classList.toggle("true-lies");
-        if (myLibrary[i].booleanRead) {
-            myLibrary[i].booleanRead = false;
-            trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
-        } else {
-            myLibrary[i].booleanRead = true;
-            trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
-        }
-        
-    })
-    //trRowCollection[i].style.color = "orangered";
+
+//   function readItorLoop() {
+//     for (let i = 0; i < trRowCollection.length; i++) {
+//         trRowCollection[i].addEventListener("click", () => {
+//             console.log("clicked read")
+//         trRowCollection[i].classList.toggle("true-lies");
+//         if (myLibrary[i].booleanRead) {
+//             myLibrary[i].booleanRead = false;
+//             trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
+//         } else {
+//             myLibrary[i].booleanRead = true;
+//             trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
+//         }
+
+//         })
+//         //trRowCollection[i].style.color = "orangered";        
+//     }
+//   }
+
+//   readItorLoop()
+
+  function arraytoChangeFalseTrue() {
+    const arrayOrange = Array.from(trRowCollection)
+    arrayOrange.forEach(element => {
+        element.addEventListener("click", (e) => {
+            const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
+            const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
+            console.log(`clicked ${nameOfBookInList}`)
+            console.log(myLibrary[myBooleanBook].booleanRead)
+        })        
+    });
   }
 
+  arraytoChangeFalseTrue()
+
   // ALGROTM TO ADD EVENT TO TRASH BUTTON
-
-
-
-
-
 
  //trRowCollection[3].parentElement.parentElement.children[0].innerHTML
 
@@ -161,19 +173,7 @@ buttonAdder.addEventListener("click", (e)=> {
   //josesmiththeone
   //josesmith283522 backup
 
-//   function whatToErase() {
-//     for (let i = 0; i < trashButtons.length; i++) {
-//         trashButtons[i].addEventListener("click", (e) => {
-//             const nameOfBookInList = trashButtons[i].parentElement.parentElement.cells[0].innerHTML
-//             const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
-//             console.log(`clicked ${indexOfLibrary}`);
-//             myLibrary.splice(indexOfLibrary, 1);
 
-//         })
-//     }
-//   }
-
-//   whatToErase()
 
   function arrayConvertToerase() {
     const arrayLib = Array.from(trashButtons)
