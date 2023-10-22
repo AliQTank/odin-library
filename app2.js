@@ -36,7 +36,9 @@ function myLibPusher2(title, author, booleanRead) {
 myLibPusher2("the hobbit", "jrr tolkien", false);
 myLibPusher2("100 años de soledad", "gabriel garcia marquez", true);
 myLibPusher2("más allá de tu mente", "alan watts", true);
-myLibPusher2("robinson crusoe", "daniel defoe", true)
+myLibPusher2("robinson crusoe", "daniel defoe", true);
+myLibPusher2("12 rules for life", "jordan b. peterson", true);
+myLibPusher2("crimen y castigo", "fyodor dostoyevsky", false);
 
 //FUNCTION TO INSERT MYLIBRARY ARRAY INTO TABLE AT FIRST LOG, PREREGISTERED BOOK OBJECTS BY DEFAULT
 function    rowsInserter2() {
@@ -131,34 +133,25 @@ buttonAdder.addEventListener("click", (e)=> {
         }    
   })
 
-//   function readItorLoop() {
-//     for (let i = 0; i < trRowCollection.length; i++) {
-//         trRowCollection[i].addEventListener("click", () => {
-//             console.log("clicked read")
-//         trRowCollection[i].classList.toggle("true-lies");
-//         if (myLibrary[i].booleanRead) {
-//             myLibrary[i].booleanRead = false;
-//             trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
-//         } else {
-//             myLibrary[i].booleanRead = true;
-//             trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
-//         }
-
-//         })
-//         //trRowCollection[i].style.color = "orangered";        
-//     }
-//   }
-
-//   readItorLoop()
+  //FUNCTION TO TOGGLE COLOR TO READ BUTTON AND TOGGLE TRUE/FALSE INTO ROW AND MYLIBRARY ORIGINAL COLLECTION
 
   function arraytoChangeFalseTrue() {
     const arrayOrange = Array.from(trRowCollection)
     arrayOrange.forEach(element => {
-        element.addEventListener("click", (e) => {
+        element.addEventListener("click", () => {
             const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
             const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
+            element.classList.toggle("true-lies")
             console.log(`clicked ${nameOfBookInList}`)
             console.log(myLibrary[myBooleanBook].booleanRead)
+            console.log(myBooleanBook)
+            if (myLibrary[myBooleanBook].booleanRead) {
+                myLibrary[myBooleanBook].booleanRead = false
+                trRowCollection[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+            } else {
+                myLibrary[myBooleanBook].booleanRead = true
+                trRowCollection[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+            }
         })        
     });
   }
