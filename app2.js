@@ -1,7 +1,7 @@
 //import { Book } from "./app";
 const buttonAdder = document.getElementById("book-inserting-button");
 const trashButtons = document.getElementsByClassName('trash');
-const trRowCollection = document.getElementsByClassName('orange');
+const orangeSelections = document.getElementsByClassName('orange');
 
 //FUNCTION TO CREATE BOOK OBJECT
 function Book(title, author, booleanRead) {
@@ -91,27 +91,29 @@ function newBookInserter() {
     btnStatusChanger.classList.add('orange'); 
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    trRowCollection[thisIndex].addEventListener("click", () => {
-        console.log("new button clicked");
-        trRowCollection[thisIndex].classList.toggle("true-lies");
-        if (myLibrary[thisIndex].booleanRead) {
-            myLibrary[thisIndex].booleanRead = false;
-            trRowCollection[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
-        } else {
-            myLibrary[thisIndex].booleanRead = true;
-            trRowCollection[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
-        }
-    })
-    trashButtons[trashButtons.length-1].addEventListener("click", () => {
-        let nameOfBookInList = trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML;
-        const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
-        console.log("new trash button clicked");
-        //console.log(trRowCollection[thisIndex].parentElement.parentElement.cells[0].innerHTML);
-        //console.log(trRowCollection[thisIndex].parentElement);
-        console.log(indexOfLibrary);
-        myLibrary.splice(indexOfLibrary, 1);
-        console.log(myLibrary);
-    })
+    // orangeSelections[thisIndex].addEventListener("click", () => {
+    //     console.log("new button clicked");
+    //     orangeSelections[thisIndex].classList.toggle("true-lies");
+    //     if (myLibrary[thisIndex].booleanRead) {
+    //         myLibrary[thisIndex].booleanRead = false;
+    //         orangeSelections[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
+    //     } else {
+    //         myLibrary[thisIndex].booleanRead = true;
+    //         orangeSelections[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
+    //     }
+    // })
+    //arraytoChangeFalseTrue()
+    // trashButtons[trashButtons.length-1].addEventListener("click", () => {
+    //     let nameOfBookInList = orangeSelections[thisIndex].parentElement.parentElement.cells[0].innerHTML;
+    //     const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+    //     console.log("new trash button clicked");
+    //     //console.log(orangeSelections[thisIndex].parentElement.parentElement.cells[0].innerHTML);
+    //     //console.log(orangeSelections[thisIndex].parentElement);
+    //     console.log(indexOfLibrary);
+    //     myLibrary.splice(indexOfLibrary, 1);
+    //     console.log(myLibrary);
+    // })
+    //arrayConvertToerase()
 } 
 
 //FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
@@ -119,24 +121,23 @@ function newBookInserter() {
 //console.log(myLibrary)
 
 buttonAdder.addEventListener("click", (e)=> {
+    e.preventDefault()
     if (document.getElementById("title").value === '' || 
         document.getElementById("author").value === '' ||
         document.getElementById("did-you-read-it").value === '') {
-            e.preventDefault();
-        } else {
-            myLibPusher2(document.getElementById("title").value, 
-            document.getElementById("author").value, 
-            document.getElementById("did-you-read-it").value==1);
-            console.log(myLibrary);
-            e.preventDefault();
-            newBookInserter()
-        }    
+    } else {
+        myLibPusher2(document.getElementById("title").value, 
+        document.getElementById("author").value, 
+        document.getElementById("did-you-read-it").value==1);
+        console.log(myLibrary);
+        newBookInserter()
+    }    
   })
 
   //FUNCTION TO TOGGLE COLOR TO READ BUTTON AND TOGGLE TRUE/FALSE INTO ROW AND MYLIBRARY ORIGINAL COLLECTION
 
   function arraytoChangeFalseTrue() {
-    const arrayOrange = Array.from(trRowCollection)
+    const arrayOrange = Array.from(orangeSelections)
     arrayOrange.forEach(element => {
         element.addEventListener("click", () => {
             const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
@@ -147,10 +148,10 @@ buttonAdder.addEventListener("click", (e)=> {
             console.log(myBooleanBook)
             if (myLibrary[myBooleanBook].booleanRead) {
                 myLibrary[myBooleanBook].booleanRead = false
-                trRowCollection[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+                orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
             } else {
                 myLibrary[myBooleanBook].booleanRead = true
-                trRowCollection[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+                orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
             }
         })        
     });
@@ -160,7 +161,7 @@ buttonAdder.addEventListener("click", (e)=> {
 
   // ALGROTM TO ADD EVENT TO TRASH BUTTON
 
- //trRowCollection[3].parentElement.parentElement.children[0].innerHTML
+ //orangeSelections[3].parentElement.parentElement.children[0].innerHTML
 
 
   //josesmiththeone
