@@ -2,6 +2,7 @@
 const buttonAdder = document.getElementById("book-inserting-button");
 const trashButtons = document.getElementsByClassName('trash');
 const orangeSelections = document.getElementsByClassName('orange');
+let count = 0;
 
 //FUNCTION TO CREATE BOOK OBJECT
 function Book(title, author, booleanRead) {
@@ -78,6 +79,7 @@ function newBookInserter() {
     var newBtnEraser = document.createElement('button');
     var btnStatusChanger = document.createElement('button');
     var thisIndex = myLibrary.length - 1;
+    var realIndex = thisIndex - count;
     cell1.innerHTML = myLibrary[thisIndex].title;
     document.getElementById("title").value = '';
     cell2.innerHTML = myLibrary[thisIndex].author;
@@ -91,20 +93,21 @@ function newBookInserter() {
     btnStatusChanger.classList.add('orange'); 
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    // orangeSelections[thisIndex].addEventListener("click", () => {
+        
+    // orangeSelections[realIndex].addEventListener("click", () => {
     //     console.log("new button clicked");
-    //     orangeSelections[thisIndex].classList.toggle("true-lies");
-    //     if (myLibrary[thisIndex].booleanRead) {
-    //         myLibrary[thisIndex].booleanRead = false;
-    //         orangeSelections[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
+    //     orangeSelections[realIndex].classList.toggle("true-lies");
+    //     if (myLibrary[realIndex].booleanRead) {
+    //         myLibrary[realIndex].booleanRead = false;
+    //         orangeSelections[realIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
     //     } else {
-    //         myLibrary[thisIndex].booleanRead = true;
-    //         orangeSelections[thisIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
+    //         myLibrary[realIndex].booleanRead = true;
+    //         orangeSelections[realIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
     //     }
     // })
-    //arraytoChangeFalseTrue()
+    
     // trashButtons[trashButtons.length-1].addEventListener("click", () => {
-    //     let nameOfBookInList = orangeSelections[thisIndex].parentElement.parentElement.cells[0].innerHTML;
+    //     let nameOfBookInList = orangeSelections[realIndex].parentElement.parentElement.cells[0].innerHTML;
     //     const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
     //     console.log("new trash button clicked");
     //     //console.log(orangeSelections[thisIndex].parentElement.parentElement.cells[0].innerHTML);
@@ -112,8 +115,9 @@ function newBookInserter() {
     //     console.log(indexOfLibrary);
     //     myLibrary.splice(indexOfLibrary, 1);
     //     console.log(myLibrary);
+    //     trashButtons[realIndex].parentElement.parentElement.remove();
     // })
-    //arrayConvertToerase()
+    
 } 
 
 //FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
@@ -142,6 +146,10 @@ buttonAdder.addEventListener("click", (e)=> {
         element.addEventListener("click", () => {
             const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
             const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
+            if(element.classList)  //new line to insert conditional for addevent
+            {
+
+            } else {}
             element.classList.toggle("true-lies")
             console.log(`clicked ${nameOfBookInList}`)
             console.log(myLibrary[myBooleanBook].booleanRead)
@@ -157,7 +165,7 @@ buttonAdder.addEventListener("click", (e)=> {
     });
   }
 
-  arraytoChangeFalseTrue()
+//   arraytoChangeFalseTrue()
 
   // ALGROTM TO ADD EVENT TO TRASH BUTTON
 
@@ -179,7 +187,7 @@ buttonAdder.addEventListener("click", (e)=> {
             myLibrary.splice(indexOfLibrary, 1)
             trashButtons[indexOfLibrary].parentElement.parentElement.remove()
         })        
-    });
+    });    
   }
 
-  arrayConvertToerase()
+//   arrayConvertToerase()
