@@ -93,10 +93,7 @@ function newBookInserter() {
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
 
-    // arraytoChangeFalseTrue()
-    // arrayConvertToerase()
-
-    
+        
     
         
     // orangeSelections[realIndex].addEventListener("click", () => {
@@ -167,14 +164,27 @@ buttonAdder.addEventListener("click", (e)=> {
     });
   }
 
-  function arraytoremoveFalseTrueEventListener() {
+  function arraytoChangeFalseTrueSecondOpWithConditional() {
     const arrayOrange = Array.from(orangeSelections)
     arrayOrange.forEach(element => {
-        element.removeEventListener("click", () => {
-            
-        })
+        const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
+        const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
+        if (element.className === 'orange') {
+            this.addEventListener("click", () => {
+                element.classList.toggle("true-lies")
+                if (myLibrary[myBooleanBook].booleanRead) {
+                    myLibrary[myBooleanBook].booleanRead = false
+                    orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+                } else {
+                    myLibrary[myBooleanBook].booleanRead = true
+                    orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+                }
+            })
+        }
     })
   }
+  
+  
 
   //arraytoChangeFalseTrue()
 
