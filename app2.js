@@ -92,6 +92,7 @@ function newBookInserter() {
     btnStatusChanger.classList.add('orange'); 
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
+    
 
         
     
@@ -183,6 +184,11 @@ buttonAdder.addEventListener("click", (e)=> {
         }
     })
   }
+
+//   if (orangeSelections[7].className === 'orange') {
+//     this.addEventListener('click', () => {
+//         console.log('do it');
+//     })}
   
   
 
