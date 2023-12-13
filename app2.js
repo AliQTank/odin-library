@@ -1,8 +1,14 @@
 //import { Book } from "./app";
 const buttonAdder = document.getElementById("book-inserting-button");
+const button = document.querySelector("button");
 const trashButtons = document.getElementsByClassName('trash');
 const orangeSelections = document.getElementsByClassName('orange');
+const onlyTable = document.getElementById("only-table");
+let docToggler = true;
 let count = 0;
+let objectsAdded = 0;
+let objectsErased = 0;
+
 
 //FUNCTION TO CREATE BOOK OBJECT
 function Book(title, author, booleanRead) {
@@ -24,6 +30,18 @@ Book.prototype.info = function() {
 Book.prototype.sayHello = function() {
     return `Hi!!, i am ${this.title} and i am a good book`
 }
+
+Book.prototype.eraser = function() {
+    // if (!this.trashButtons === "true lies") {
+    //     this.trashButtons.classList = "true lies"
+    // } else {
+    //     this.trashButtons.classList.toggle = "true lies"
+        
+    // }
+    if (trashButtons.classList === "trashbutton") {
+        this.trashButtons.classList.toggle = "true lies";
+    }
+} ();
 
 //ARRAY MYLIBRARY
 const myLibrary = [];
@@ -47,7 +65,7 @@ function    rowsInserter2() {
     //var table = document.getElementById("only-table");
     
     for (let i = 0; i < myLibrary.length; i++) {
-        var onlyTable = document.getElementById("only-table");
+        //var onlyTable = document.getElementById("only-table");
         var row = onlyTable.insertRow(-1);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -64,14 +82,21 @@ function    rowsInserter2() {
         cell3.appendChild(newBtnEraser);
         cell3.appendChild(btnStatusChanger);
     }
+    count = myLibrary.length;
     
   }
 
-  //FUNCTION TO INSERT NEW BOOK OBJECT INTO TABLE AND INSERT 
   rowsInserter2()
+  
+  function rowInserter4() {
+    for (const book of myLibrary) {
+        console.log(book)        
+    }
+  }
 
-function newBookInserter() {
-    var onlyTable = document.getElementById("only-table");
+  //FUNCTION TO INSERT NEW BOOK OBJECT INTO TABLE AND INSERT 
+  function newBookInserter() {
+    //var onlyTable = document.getElementById("only-table");
     var row = onlyTable.insertRow(-1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -79,7 +104,6 @@ function newBookInserter() {
     var newBtnEraser = document.createElement('button');
     var btnStatusChanger = document.createElement('button');
     var thisIndex = myLibrary.length - 1;
-    var realIndex = thisIndex - count;
     cell1.innerHTML = myLibrary[thisIndex].title;
     document.getElementById("title").value = '';
     cell2.innerHTML = myLibrary[thisIndex].author;
@@ -92,9 +116,8 @@ function newBookInserter() {
     btnStatusChanger.classList.add('orange'); 
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    
+    count++, objectsAdded++;
 
-        
     
         
     // orangeSelections[realIndex].addEventListener("click", () => {
@@ -137,7 +160,7 @@ buttonAdder.addEventListener("click", (e)=> {
         document.getElementById("author").value, 
         document.getElementById("did-you-read-it").value==1);
         console.log(myLibrary);
-        newBookInserter()
+        newBookInserter();        
     }    
   })
 
@@ -146,10 +169,9 @@ buttonAdder.addEventListener("click", (e)=> {
   function arraytoChangeFalseTrue() {
     const arrayOrange = Array.from(orangeSelections)
     arrayOrange.forEach(element => {
-        element.addEventListener("click", () => {
-            const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
-            const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
-            
+        element.addEventListener("click", function falser()  {
+            const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
+            const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);            
             element.classList.toggle("true-lies")
             console.log(`clicked ${nameOfBookInList}`)
             console.log(myLibrary[myBooleanBook].booleanRead)
@@ -165,25 +187,7 @@ buttonAdder.addEventListener("click", (e)=> {
     });
   }
 
-  function arraytoChangeFalseTrueSecondOpWithConditional() {
-    const arrayOrange = Array.from(orangeSelections)
-    arrayOrange.forEach(element => {
-        const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
-        const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
-        if (element.className === 'orange') {
-            this.addEventListener("click", () => {
-                element.classList.toggle("true-lies")
-                if (myLibrary[myBooleanBook].booleanRead) {
-                    myLibrary[myBooleanBook].booleanRead = false
-                    orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
-                } else {
-                    myLibrary[myBooleanBook].booleanRead = true
-                    orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
-                }
-            })
-        }
-    })
-  }
+  
 
 //   if (orangeSelections[7].className === 'orange') {
 //     this.addEventListener('click', () => {
@@ -196,20 +200,56 @@ buttonAdder.addEventListener("click", (e)=> {
 
   function arrayConvertToerase() {
     const arrayLib = Array.from(trashButtons)
+    // function dropEventListener() {
+    //     //const arrayLib = Array.from(trashButtons)
+    //     arrayLib.forEach(element => {
+    //         element.removeEventListener("click", eraser());
+    //         element.removeEventListener("click", falser());
+    //     })        
+    // }
     arrayLib.forEach(element => {
-        element.addEventListener("click", () => {
-            const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML
-            const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList)
-            console.log(nameOfBookInList, indexOfLibrary)
-            myLibrary.splice(indexOfLibrary, 1)
-            trashButtons[indexOfLibrary].parentElement.parentElement.remove()
-        })        
-    });    
+        if (!docToggler) {
+            element.removeEventListener("mouseover", buttonTarget);
+            
+        } else {
+            element.addEventListener("click", function eraser (e)  {
+                const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
+                const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+                console.log(nameOfBookInList, indexOfLibrary, e.target)
+                myLibrary.splice(indexOfLibrary, 1)
+                trashButtons[indexOfLibrary].parentElement.parentElement.remove();
+                count--, objectsErased++, docToggler = !docToggler;            
+            })      
+            element.addEventListener("mouseover", buttonTarget)  
+
+        }
+        
+        //element.addEventListener("click", listenerToggler)
+    });        
 }
 
+function listenerToggler(e) {
+    const nameOfBookInList = e.target.parentElement.parentElement.cells[0].innerHTML;
+    const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+    myLibrary.splice(indexOfLibrary, 1);
+    trashButtons[indexOfLibrary].parentElement.parentElement.remove();
+    count--, objectsErased++, docToggler = !docToggler;
+    }
+
+function buttonTarget(e){
+    if (trashButtons){
+        
+    }
+    //console.log(e.target.parentElement.parentElement?.cells[0].innerHTML ? e.target.parentElement.parentElement?.cells[0].innerHTML: "no hay");
+    console.log(e.target.parentElement);        
+}    
+
 function bothFuncs() {
-    arraytoChangeFalseTrue();
-    arrayConvertToerase();
+    if(count === myLibrary.length) {
+        arraytoChangeFalseTrue();
+        arrayConvertToerase();        
+    }
+    
 }
 
 //arrayConvertToerase()
