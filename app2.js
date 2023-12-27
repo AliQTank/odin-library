@@ -228,6 +228,15 @@ buttonAdder.addEventListener("click", (e)=> {
     });        
 }
 
+function trashToggler(e) { 
+    if(e.target.classList === trashButtons) {
+        const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
+        const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+        myLibrary.splice(indexOfLibrary, 1);
+        trashButtons[indexOfLibrary].parentElement.parentElement.remove();
+    }    
+}
+
 function listenerToggler(e) {
     const nameOfBookInList = e.target.parentElement.parentElement.cells[0].innerHTML;
     const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
@@ -239,9 +248,9 @@ function listenerToggler(e) {
 function buttonTarget(e){
     if (trashButtons){
         
+        console.log(e.target.parentElement.parentElement);        
     }
     //console.log(e.target.parentElement.parentElement?.cells[0].innerHTML ? e.target.parentElement.parentElement?.cells[0].innerHTML: "no hay");
-    console.log(e.target.parentElement);        
 }    
 
 function bothFuncs() {
