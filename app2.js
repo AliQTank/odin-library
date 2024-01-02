@@ -104,7 +104,7 @@ function    rowsInserter2() {
     btnStatusChanger.classList.add('orange');     
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    count++, objectsAdded++; arrayConvertToerase(); //, docToggler = !docToggler? false: true;  
+    count++, objectsAdded++; bothFuncs(); //, docToggler = !docToggler? false: true;  
 } 
 
 //FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
@@ -132,6 +132,8 @@ buttonAdder.addEventListener("click", (e)=> {
     arrayOrange.forEach(element => {
         if (!docToggler) {
             element.removeEventListener("mouseover", buttonTargetOrange)
+            element.removeEventListener("click", trueSwitcher)
+        
         } else {
             element.addEventListener("mouseover", buttonTargetOrange)
         }
