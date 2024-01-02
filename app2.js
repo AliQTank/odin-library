@@ -32,12 +32,7 @@ Book.prototype.sayHello = function() {
 }
 
 Book.prototype.eraser = function() {
-    // if (!this.trashButtons === "true lies") {
-    //     this.trashButtons.classList = "true lies"
-    // } else {
-    //     this.trashButtons.classList.toggle = "true lies"
-        
-    // }
+    
     if (trashButtons.classList === "trashbutton") {
         this.trashButtons.classList.toggle = "true lies";
     }
@@ -85,14 +80,7 @@ function    rowsInserter2() {
     count = myLibrary.length;
     
   }
-
   rowsInserter2()
-  
-  function rowInserter4() {
-    for (const book of myLibrary) {
-        console.log(book)        
-    }
-  }
 
   //FUNCTION TO INSERT NEW BOOK OBJECT INTO TABLE AND INSERT 
   function newBookInserter() {
@@ -113,37 +101,10 @@ function    rowsInserter2() {
     newBtnEraser.innerHTML = '<span class="material-symbols-outlined">delete</span>';
     newBtnEraser.classList.add('trash');
     btnStatusChanger.innerHTML = '<span class="material-symbols-outlined">import_contacts</span>';
-    btnStatusChanger.classList.add('orange'); 
+    btnStatusChanger.classList.add('orange');     
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    count++, objectsAdded++;
-
-    
-        
-    // orangeSelections[realIndex].addEventListener("click", () => {
-    //     console.log("new button clicked");
-    //     orangeSelections[realIndex].classList.toggle("true-lies");
-    //     if (myLibrary[realIndex].booleanRead) {
-    //         myLibrary[realIndex].booleanRead = false;
-    //         orangeSelections[realIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
-    //     } else {
-    //         myLibrary[realIndex].booleanRead = true;
-    //         orangeSelections[realIndex].parentElement.firstChild.innerText = myLibrary[thisIndex].booleanRead;
-    //     }
-    // })
-    
-    // trashButtons[trashButtons.length-1].addEventListener("click", () => {
-    //     let nameOfBookInList = orangeSelections[realIndex].parentElement.parentElement.cells[0].innerHTML;
-    //     const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
-    //     console.log("new trash button clicked");
-    //     //console.log(orangeSelections[thisIndex].parentElement.parentElement.cells[0].innerHTML);
-    //     //console.log(orangeSelections[thisIndex].parentElement);
-    //     console.log(indexOfLibrary);
-    //     myLibrary.splice(indexOfLibrary, 1);
-    //     console.log(myLibrary);
-    //     trashButtons[realIndex].parentElement.parentElement.remove();
-    // })
-    
+    count++, objectsAdded++; arrayConvertToerase(), docToggler = !docToggler? false: true;  
 } 
 
 //FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
@@ -169,13 +130,18 @@ buttonAdder.addEventListener("click", (e)=> {
   function arraytoChangeFalseTrue() {
     const arrayOrange = Array.from(orangeSelections)
     arrayOrange.forEach(element => {
+        // if (!docToggler) {
+        //     element.removeEventListener("click", buttonTarget)
+        // } else {
+        //     element.addEventListener("click", buttonTarget)
+        // }
         element.addEventListener("click", function falser()  {
             const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
             const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);            
             element.classList.toggle("true-lies")
-            console.log(`clicked ${nameOfBookInList}`)
-            console.log(myLibrary[myBooleanBook].booleanRead)
-            console.log(myBooleanBook)
+            console.log(`clicked ${nameOfBookInList}`, myLibrary[myBooleanBook].booleanRead, myBooleanBook)
+            // console.log(myLibrary[myBooleanBook].booleanRead)
+            // console.log(myBooleanBook)
             if (myLibrary[myBooleanBook].booleanRead) {
                 myLibrary[myBooleanBook].booleanRead = false
                 orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
@@ -185,80 +151,63 @@ buttonAdder.addEventListener("click", (e)=> {
             }
         })        
     });
+  }  
+
+  function trueSwitcher(e) {
+    const item = e.target;
+    if (item.classList[0] === 'orange') {
+        const nameOfBookInList = item.parentElement.parentElement.cells[0].innerHTML;
+        const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+        item.classList.toggle("true-lies");
+    }
   }
-
-  
-
-//   if (orangeSelections[7].className === 'orange') {
-//     this.addEventListener('click', () => {
-//         console.log('do it');
-//     })}
-  
-  
 
   //arraytoChangeFalseTrue()
 
   function arrayConvertToerase() {
-    const arrayLib = Array.from(trashButtons)
-    // function dropEventListener() {
-    //     //const arrayLib = Array.from(trashButtons)
-    //     arrayLib.forEach(element => {
-    //         element.removeEventListener("click", eraser());
-    //         element.removeEventListener("click", falser());
-    //     })        
-    // }
+    const arrayLib = Array.from(trashButtons);    
     arrayLib.forEach(element => {
         if (!docToggler) {
             element.removeEventListener("mouseover", buttonTarget);
+            element.removeEventListener("click", trashToggler);
             
         } else {
-            element.addEventListener("click", function eraser (e)  {
-                const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
-                const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
-                console.log(nameOfBookInList, indexOfLibrary, e.target)
-                myLibrary.splice(indexOfLibrary, 1)
-                trashButtons[indexOfLibrary].parentElement.parentElement.remove();
-                count--, objectsErased++, docToggler = !docToggler;            
-            })      
-            element.addEventListener("mouseover", buttonTarget)  
-
+            element.addEventListener("click", trashToggler);                  
+            element.addEventListener("mouseover", buttonTarget);  
         }
         
         //element.addEventListener("click", listenerToggler)
     });        
 }
 
-function trashToggler(e) { 
-    if(e.target.classList === trashButtons) {
-        const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
+function trashToggler(e) {
+    const item = e.target; 
+    if(item.classList[0] === 'trash' ) {
+        const nameOfBookInList = item.parentElement.parentElement.cells[0].innerHTML;
         const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
         myLibrary.splice(indexOfLibrary, 1);
         trashButtons[indexOfLibrary].parentElement.parentElement.remove();
+        count--, objectsErased++, docToggler = true ? false : false;        
     }    
 }
 
-function listenerToggler(e) {
-    const nameOfBookInList = e.target.parentElement.parentElement.cells[0].innerHTML;
-    const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
-    myLibrary.splice(indexOfLibrary, 1);
-    trashButtons[indexOfLibrary].parentElement.parentElement.remove();
-    count--, objectsErased++, docToggler = !docToggler;
-    }
-
 function buttonTarget(e){
-    if (trashButtons){
-        
-        console.log(e.target.parentElement.parentElement);        
-    }
-    //console.log(e.target.parentElement.parentElement?.cells[0].innerHTML ? e.target.parentElement.parentElement?.cells[0].innerHTML: "no hay");
+    const item = e.target;
+    if (item.classList[0] === 'trash'){       
+    } else {console.log(e.target.parentElement);}    
 }    
+
+function buttonTargetOrange(e) {
+    const item = e.target;
+    if(item.classList[0] === 'orange'){
+    } else {console.log(e.target.parentElement);}
+}
 
 function bothFuncs() {
     if(count === myLibrary.length) {
         arraytoChangeFalseTrue();
         arrayConvertToerase();        
-    }
-    
+    }    
 }
 
 //arrayConvertToerase()
