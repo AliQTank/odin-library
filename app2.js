@@ -104,7 +104,7 @@ function    rowsInserter2() {
     btnStatusChanger.classList.add('orange');     
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    count++, objectsAdded++; arrayConvertToerase(), docToggler = !docToggler? false: true;  
+    count++, objectsAdded++; arrayConvertToerase(); //, docToggler = !docToggler? false: true;  
 } 
 
 //FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
@@ -130,35 +130,45 @@ buttonAdder.addEventListener("click", (e)=> {
   function arraytoChangeFalseTrue() {
     const arrayOrange = Array.from(orangeSelections)
     arrayOrange.forEach(element => {
-        // if (!docToggler) {
-        //     element.removeEventListener("click", buttonTarget)
-        // } else {
-        //     element.addEventListener("click", buttonTarget)
-        // }
-        element.addEventListener("click", function falser()  {
-            const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
-            const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);            
-            element.classList.toggle("true-lies")
-            console.log(`clicked ${nameOfBookInList}`, myLibrary[myBooleanBook].booleanRead, myBooleanBook)
-            // console.log(myLibrary[myBooleanBook].booleanRead)
-            // console.log(myBooleanBook)
-            if (myLibrary[myBooleanBook].booleanRead) {
-                myLibrary[myBooleanBook].booleanRead = false
-                orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
-            } else {
-                myLibrary[myBooleanBook].booleanRead = true
-                orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
-            }
-        })        
+        if (!docToggler) {
+            element.removeEventListener("mouseover", buttonTargetOrange)
+        } else {
+            element.addEventListener("mouseover", buttonTargetOrange)
+        }
+        // element.addEventListener("click", function falser()  {
+        //     const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
+        //     const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);            
+        //     element.classList.toggle("true-lies")
+        //     console.log(`clicked ${nameOfBookInList}`, myLibrary[myBooleanBook].booleanRead, myBooleanBook)
+        //     // console.log(myLibrary[myBooleanBook].booleanRead)
+        //     // console.log(myBooleanBook)
+        //     if (myLibrary[myBooleanBook].booleanRead) {
+        //         myLibrary[myBooleanBook].booleanRead = false
+        //         orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+        //     } else {
+        //         myLibrary[myBooleanBook].booleanRead = true
+        //         orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+        //     }
+        // }) 
+        element.addEventListener("click", trueSwitcher)       
     });
   }  
 
+
+  // FUNCTION INTENDED TO REPLACE FALSER
   function trueSwitcher(e) {
     const item = e.target;
     if (item.classList[0] === 'orange') {
         const nameOfBookInList = item.parentElement.parentElement.cells[0].innerHTML;
         const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
         item.classList.toggle("true-lies");
+        if (myLibrary[myBooleanBook].booleanRead) {
+            myLibrary[myBooleanBook].booleanRead = false;
+            orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+        } else {
+            myLibrary[myBooleanBook].booleanRead = true
+            orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+        }
     }
   }
 
@@ -199,7 +209,7 @@ function buttonTarget(e){
 
 function buttonTargetOrange(e) {
     const item = e.target;
-    if(item.classList[0] === 'orange'){
+    if(item.classList[0] === 'orange'){ 
     } else {console.log(e.target.parentElement);}
 }
 
