@@ -104,7 +104,7 @@ function    rowsInserter2() {
     btnStatusChanger.classList.add('orange');     
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    count++, objectsAdded++; bothFuncs(); //, docToggler = !docToggler? false: true;  
+    count++, objectsAdded++; //bothFuncs(); //, docToggler = !docToggler? false: true;  
 } 
 
 //FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
@@ -136,6 +136,7 @@ buttonAdder.addEventListener("click", (e)=> {
         
         } else {
             element.addEventListener("mouseover", buttonTargetOrange)
+            element.addEventListener("click", trueSwitcher)       
         }
         // element.addEventListener("click", function falser()  {
         //     const nameOfBookInList = element.parentElement.parentElement.cells[0].innerHTML;
@@ -152,7 +153,6 @@ buttonAdder.addEventListener("click", (e)=> {
         //         orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
         //     }
         // }) 
-        element.addEventListener("click", trueSwitcher)       
     });
   }  
 
