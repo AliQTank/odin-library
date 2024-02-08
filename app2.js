@@ -105,6 +105,16 @@ function    rowsInserter2() {
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
     count++, objectsAdded++; //bothFuncs(); //, docToggler = !docToggler? false: true;  
+    if (!docToggler) { 
+        bothFuncs();
+        docToggler = !docToggler;
+        bothFuncs()
+    } else { 
+        docToggler = !docToggler;
+        bothFuncs();
+        docToggler = !docToggler;
+        bothFuncs();
+    }
 } 
 
 //FUNCTION TO ADD EVENT LISTENER FOR TRASH AND ERASER BUTTON(TO BE MADE)
