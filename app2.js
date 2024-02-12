@@ -46,6 +46,10 @@ function myLibPusher2(title, author, booleanRead) {
     myLibrary.push(new Book(title, author, booleanRead))
 }
 
+// function arrowPusher(infoOne, infoTwo, infoThree) {
+//     Array.prototype.push(arguments)
+// }
+
 //BOOK OBJECTS ADDED TO MYLIBRARY ARRAY
 myLibPusher2("the hobbit", "jrr tolkien", false);
 myLibPusher2("100 años de soledad", "gabriel garcia marquez", true);
@@ -231,6 +235,8 @@ function bothFuncs() {
         arrayConvertToerase();        
     }    
 }
+
+bothFuncs();
 
 //arrayConvertToerase()
 //josesmith283522 backup
