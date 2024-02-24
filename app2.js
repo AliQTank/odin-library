@@ -108,7 +108,7 @@ function    rowsInserter2() {
     btnStatusChanger.classList.add('orange');     
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    count++, objectsAdded++; //bothFuncs(); //, docToggler = !docToggler? false: true;  
+    count++, objectsAdded++; //bothFuncs(); //, docToggler = !docToggler? false: true;
     if (!docToggler) { 
         bothFuncs();
         docToggler = !docToggler;
