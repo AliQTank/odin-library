@@ -226,7 +226,13 @@ function trashToggler(e) {
         myLibrary.splice(indexOfLibrary, 1);
         trashButtons[indexOfLibrary].parentElement.parentElement.remove();
         count--, objectsErased++, docToggler = true ? false : false;        
-    }    
+    } else if (item.parentElement.classList[0] === 'trash') {
+        const nameOfBookInList = item.parentElement.parentElement.parentElement.cells[0].innerHTML;
+        const indexOfLibrary = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+        myLibrary.splice(indexOfLibrary, 1);
+        trashButtons[indexOfLibrary].parentElement.parentElement.remove();
+        count--, objectsErased++, docToggler = true ? false : false;
+    }
 }
 
 function buttonTarget(e){
