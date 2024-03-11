@@ -4,6 +4,7 @@ const button = document.querySelector("button");
 const trashButtons = document.getElementsByClassName('trash');
 const orangeSelections = document.getElementsByClassName('orange');
 const onlyTable = document.getElementById("only-table");
+const span = document.getElementsByTagName("span");
 let docToggler = true;
 let count = 0;
 let objectsAdded = 0;
@@ -108,7 +109,7 @@ function    rowsInserter2() {
     btnStatusChanger.classList.add('orange');     
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
-    count++, objectsAdded++; //bothFuncs(); //, docToggler = !docToggler? false: true;
+    count++, objectsAdded++; //bothFuncs(); //, docToggler = !docToggler? false: true;  
     if (!docToggler) { 
         bothFuncs();
         docToggler = !docToggler;
@@ -178,6 +179,17 @@ buttonAdder.addEventListener("click", (e)=> {
         const nameOfBookInList = item.parentElement.parentElement.cells[0].innerHTML;
         const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
         item.classList.toggle("true-lies");
+        if (myLibrary[myBooleanBook].booleanRead) {
+            myLibrary[myBooleanBook].booleanRead = false;
+            orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+        } else {
+            myLibrary[myBooleanBook].booleanRead = true
+            orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
+        }
+    } else if (item.parentElement.classList[0] === 'orange') {
+        const nameOfBookInList = item.parentElement.parentElement.parentElement.cells[0].innerHTML;
+        const myBooleanBook = myLibrary.map(obj => obj.title).indexOf(nameOfBookInList);
+        item.parentElement.classList.toggle("true-lies");
         if (myLibrary[myBooleanBook].booleanRead) {
             myLibrary[myBooleanBook].booleanRead = false;
             orangeSelections[myBooleanBook].parentElement.firstChild.innerText = myLibrary[myBooleanBook].booleanRead
