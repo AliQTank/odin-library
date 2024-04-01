@@ -75,6 +75,7 @@ form input[type=submit]:hover {
 
 table {
     border: 2px solid var(--table-border);
+    /* width: 100%; */
 }
 
 table caption {
