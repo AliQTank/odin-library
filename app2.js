@@ -257,5 +257,3 @@ function bothFuncs() {
 bothFuncs();
 
 //arrayConvertToerase()
-//josesmith283522 backup
-//josesmiththeone
