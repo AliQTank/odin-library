@@ -10,6 +10,8 @@ const button = document.getElementsByTagName("button")
 
 let myLibrary = []
 
+//BOOK CONSTRUCTOR
+
 function Book(title, author, booleanRead) {
     this.title = title,
     this.author = author,
@@ -77,10 +79,11 @@ function    rowsInserter() {
     document.getElementById("title").value = ''
     cell2.innerHTML = document.getElementById("author").value;
     document.getElementById("author").value = ''
-    cell3.innerHTML = document.getElementById("did-you-read-it").value;
+    //cell3.innerHTML = document.getElementById("did-you-read-it").value;
+    cell3.innerHTML = `<p>${document.getElementById("did-you-read-it").value}</p>`
     document.getElementById("did-you-read-it").value = ''
-    newBtnEraser.innerText = 'delete';
-    btnStatusChanger.innerText = 'read';
+    newBtnEraser.innerHTML = '<span class="material-symbols-outlined">delete</span>';
+    btnStatusChanger.innerHTML = '<span class="material-symbols-outlined">import_contacts</span>';
     btnStatusChanger.classList.add('orange'); //this lline is not working
     cell3.appendChild(newBtnEraser);
     cell3.appendChild(btnStatusChanger);
@@ -103,9 +106,10 @@ function    rowsInserter() {
         var btnStatusChanger = document.createElement('button');
         cell1.innerHTML = myLibrary[i].title;
         cell2.innerHTML = myLibrary[i].author;
-        cell3.innerHTML = myLibrary[i].booleanRead;
-        newBtnEraser.innerText = 'delete';
-        btnStatusChanger.innerText = 'read';
+        //cell3.innerHTML = myLibrary[i].booleanRead;
+        cell3.innerHTML = `<p>${myLibrary[i].booleanRead}</p>`
+        newBtnEraser.innerHTML = '<span class="material-symbols-outlined">delete</span>';
+        btnStatusChanger.innerHTML = '<span class="material-symbols-outlined">import_contacts</span>';
         btnStatusChanger.classList.add('orange');
         cell3.appendChild(newBtnEraser);
         cell3.appendChild(btnStatusChanger);
@@ -114,6 +118,20 @@ function    rowsInserter() {
   }
 
   rowsInserter2()
+
+  function rowsInserter3() {
+    var row = onlyTable.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var newBtnEraser = document.createElement('button');
+    var btnStatusChanger = document.createElement('button');
+    myLibrary
+    .push(
+        {title: document.getElementById("title").value,
+         author: document.getElementById("author").value,
+         booleanRead: document.getElementById("did-you-read-it").value})
+  }
 
   buttonAdder.addEventListener("click", (e)=> {
     if (document.getElementById("title").value === '' || 
@@ -133,7 +151,17 @@ function    rowsInserter() {
   for (let i = 0; i < trRowCollection.length; i++) {
     trRowCollection[i].addEventListener("click", () => {
         console.log("clicked read")
-
+        trRowCollection[i].classList.toggle("true-lies");
+        if (myLibrary[i].booleanRead) {
+            myLibrary[i].booleanRead = false;
+            trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
+        } else {
+            myLibrary[i].booleanRead = true;
+            trRowCollection[i].parentElement.firstChild.innerText = myLibrary[i].booleanRead;
+        }
+        
     })
-    trRowCollection[i].style.color = "red";
+    trRowCollection[i].style.color = "orangered";
   }  
+
+  //export {Book}

@@ -1,3 +1,15 @@
+:root {
+    --main-font-color001: whitesmoke;
+    --main-font-color002: floralwhite;
+    --main-font-color003: honeydew;
+    --main-bg-color001: cadetblue;
+    --table-border: rebeccapurple;
+    --table-th: rosybrown;
+    --false-reader: rgb(110, 84, 75);
+    --over-false-reader: aqua;
+    --orange-red: orangered;
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -12,35 +24,63 @@
   'opsz' 48
 }
 
+.material-symbols-outlined:hover {
+    z-index: -3;
+}
+
 body {
     margin: 50px;
-
+    background: var(--main-bg-color001);
+    font-family: sans-serif;
 }
 
 h2 {
-    margin-bottom: 30px;    
+    margin-bottom: 30px;
+    color: var(--main-bg-color001);
+    font-size: 1.5em;
+    text-transform: uppercase;   
 }
 
 form {
     margin-bottom: 30px;
+    color: var(--main-font-color001);
 }
 
 form input[type=text] {
     padding-left: 10px;
+    height: 40px;
 }
 
 form select {
     margin-right: 40px;
+    margin-bottom: 20px;
+    height: 40px;
 }
 
 form input[type=submit] {
-    width: 120px;
-    border-radius: 20px;
-    background-color: whitesmoke;
+    width: 100%;
+    height: 45px;
+    color: var(--main-font-color001);
+    background-color: inherit;
+    border: 2px solid var(--main-font-color001);
+    border-radius: 4px;
+}
+
+form input[type=submit]:hover {
+    cursor: pointer;
+    background-color: var(--main-font-color001);
+    color: var(--main-bg-color001);
+    font-weight: bold;
 }
 
 table {
-    border: 1px solid rebeccapurple;
+    border: 2px solid var(--table-border);
+    /* width: 100%; */
+}
+
+table caption {
+    color: var(--main-font-color001);
+    content-visibility: hidden;
 }
 
 table tr th,
@@ -49,11 +89,13 @@ table tr td {
     text-transform: capitalize;
     height: 40px;
     padding-left: 15px;
+    background: var(--main-font-color002);
+    background: var(--main-font-color003);
 }
 
-table tr:nth-child(even) {
+/* table tr:nth-child(even) {
     background-color: #ddcaca;
-} 
+}  */
 
 /* table tr td button {
     border-radius: 20px;
@@ -61,11 +103,20 @@ table tr:nth-child(even) {
     left: 800px;
 } */
 
+table tr th {
+    background: var(--table-th);
+    color: var(--main-font-color001);
+} 
+
 table tr td:nth-child(3) {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+}
+
+table tr td:nth-child(3) p  {
+    flex: auto;
 }
 
 table tr td button {
@@ -85,11 +136,16 @@ table tr td button:first-child {
 }
 
 .orange {
-    background-color: rgb(110, 84, 75);
-    color: orangered;
+    background-color: var(--false-reader);
+    color: var(--orange-red);
 }
 
 .orange:hover {
-    background-color: aqua;
-    color: rgb(250, 128, 114);
+    background-color: var(--over-false-reader) ;
+    color: var(--orange-red);
+}
+
+.true-lies {
+    background-color: black;
+    color: var(--main-font-color001);
 }
