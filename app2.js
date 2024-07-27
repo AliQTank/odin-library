@@ -32,12 +32,12 @@ Book.prototype.sayHello = function() {
     return `Hi!!, i am ${this.title} and i am a good book`
 }
 
-Book.prototype.eraser = function() {
+// Book.prototype.eraser = function() {
     
-    if (trashButtons.classList === "trashbutton") {
-        this.trashButtons.classList.toggle = "true lies";
-    }
-} ();
+//     if (trashButtons.classList === "trashbutton") {
+//         this.trashButtons.classList.toggle = "true lies";
+//     }
+// } ();
 
 //ARRAY MYLIBRARY
 const myLibrary = [];
@@ -59,6 +59,7 @@ myLibPusher2("robinson crusoe", "daniel defoe", true);
 myLibPusher2("12 rules for life", "jordan b. peterson", true);
 myLibPusher2("crimen y castigo", "fyodor dostoyevsky", true);
 myLibPusher2("cant hurt me", "david goggings",  false);
+myLibPusher2("endure", "cameron haynes",  true);
 
 //FUNCTION TO INSERT MYLIBRARY ARRAY INTO TABLE AT FIRST LOG, PREREGISTERED BOOK OBJECTS BY DEFAULT
 function    rowsInserter2() {
